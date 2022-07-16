@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--    Navigation bar-->
+    <nav>
+
+    </nav>
+
+    <div id="main-section">
+        <!--        Group selection-->
+        <nav id="left-panel">
+            <h4>GROUPS</h4>
+            {% for grp in groups %}
+                <p class="select-grp">{{grp|title}}</p>
+
+            {% endfor %}
+
+        </nav>
+        <!--        Message area-->
+        <div id="right-panel">
+            <!--        Message display-->
+            <div id="message_display">
+
+            </div>
+            <!--            Input message-->
+            <div id="input-message">
+                <input type="text" id="user-message" placeholder="type message" autocomplete="off">
+                <button type="button" id="send-message">SEND</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const username=`{{username|e}}`;
+    </script>
+    <a href="logout">
+    <input type="button" value="logout">
+    </a>
+    <button type="button" id="leaveGroup">Leave Group</button>
+
+    <!--    SocketIO JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+
+    <!--    Custome Socket JS-->
+    <script src="{{url_for('static',filename='scripts/socketio.js')}}">
+
+    </script>
+
+
+</body>
+</html>
