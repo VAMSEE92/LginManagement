@@ -1,0 +1,5 @@
+.gitignore
+Lib/
+__pycache__/
+pyvenv.cfg
+requirements.txt
