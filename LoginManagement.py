@@ -96,7 +96,7 @@ def chat():
 # creating message event handler
 @socketio.on('message')
 def message(data):
-    print(f"\n\n{data}\n\n")
+    # print(f"\n\n{data}\n\n")
     send({'msg': data['msg'], 'username': data['username']},room=data['group'])
 
 @socketio.on('join')
@@ -105,7 +105,8 @@ def join(data):
     send({'msg':data['username']+"has joined the "+data['group']+" group"},room=data['group'])
 
 @socketio.on('leave')
-def leave():
+def leave(data):
+    print(f"\n\n{data}\n\n")
     leave_room(data['group'])
     send({'msg': data['username'] + "has left the " + data['group'] + " group"}, room=data['group'])
     
