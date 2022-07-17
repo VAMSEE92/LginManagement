@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded',()=>{
     var socket=io.connect("http://localhost:5000")
-    let group;
+    var group;
 //    socket.on('connect',()=>{
 //        socket.send("I am connected");
 //    });
@@ -24,19 +24,23 @@ document.addEventListener('DOMContentLoaded',()=>{
             }else{
              joinGrp(newGroup);
              group=newGroup;
-             group=newGroup
             }
         }
     });
     //Leave Group
     function leaveGroup(group){
-        socket.emit('leave',{'username':username, 'group':grup})
+//        console.log(group)
+        socket.emit('leave',{'username':username, 'group':group})
     }
     function joinGrp(group){
         socket.emit('join',{'username':username, 'group':group})
         //clear message
         document.querySelector('#message_display').innerHTML=''
     }
+
+    document.querySelector('#leaveGroup').onclick=()=>
+        leaveGroup(group)
+
 
     //printing system messages
     function printMsg(msg){
